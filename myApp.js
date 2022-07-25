@@ -1,22 +1,27 @@
 require('dotenv').config();
 
-/* 1) Install & Set up mongoose */
-
-const mongoose = require('mongoose');
-/*mongoose.connect(process.env.MONGO_URI);*/
-/*mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true });*/
-mongoose.connect('mongodb+srv://Per:Parolamongodb07@cluster0.4ch8y.mongodb.net/?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true });
 
 
-/* 2) Create a Model */
+//To-Do # 1: Install & Set up mongoose */
 
-const { Schema } = mongoose;
-const personSchema = new Schema({
+let uri = 'mongodb+srv://Per:<password>@cluster0.4ch8y.mongodb.net/?retryWrites=true&w=majority');
+mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+
+
+//To-Do # 2: Create a Model
+const Schema = mongoose.Schema;
+
+let personSchema = new Schema({
   name: { type: String, required: true },
   age: Number,
   favoriteFoods: [String]
-})
-const Person = mongoose.model("Person", personSchema);
+});
+let Person = mongoose.model('Person', personSchema);
+
+
+
+
+
 
 /* 3) Create and Save a Record of a Model*/
 
