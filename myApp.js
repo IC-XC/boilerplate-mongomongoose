@@ -1,16 +1,16 @@
 require('dotenv').config();
 
 
-
 //To-Do # 1: Install & Set up mongoose */
 
-let uri = 'mongodb+srv://Per:<password>@cluster0.4ch8y.mongodb.net/?retryWrites=true&w=majority');
+let uri = 'mongodb+srv://Per:Hunedoara@cluster0.4ch8y.mongodb.net/db-fcc?retryWrites=true&w=majority';
+let mongoose = require('mongoose');
 mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 
 
-//To-Do # 2: Create a Model
-const Schema = mongoose.Schema;
+//To-Do # 2: Create a Model */
 
+const Schema = mongoose.Schema;
 let personSchema = new Schema({
   name: { type: String, required: true },
   age: Number,
@@ -19,19 +19,21 @@ let personSchema = new Schema({
 let Person = mongoose.model('Person', personSchema);
 
 
+//To-Do # 3: Create and Save a Record of a Model */
 
-
-
-
-/* 3) Create and Save a Record of a Model*/
-
-const Person = mongoose.model("Person", personSchema);
 const createAndSavePerson = (done) => {
-  let Virg = new Person({ 
-    name: 'Virg',
-    age: 62,
-    favoriteFoords: ['Milk', 'Butter', 'Cheese', 'Eggs', 'Apricots']
-  })
+  let ICXC = new Person({
+    name: "ICXC",
+    age: 00,
+    favoriteFoods: ["eggs", "fish", "fresh fruit"]
+  });
+
+  ICXC.save(function(err, data){
+    if(err) return console.log(err);
+    done(null, data)
+  });
+};
+
 
 
 
