@@ -35,11 +35,28 @@ const createAndSavePerson = (done) => {
 };
 
 
+//To-Do # 4: Create Many Records with model.create() */
 
+const arrayOfPeople = [
+  {name: 'Adams', age: 32, favoriteFoods: ['paella', 'rice', 'cereal']},
+  {name: 'Baker', age: 33, favoriteFoods: ['tacos', 'hummus', 'croissant']},
+  {name: 'Clark', age: 34, favoriteFoods: ['ham', 'lasagna', 'lobster']},
+  {name: 'Davis', age: 35, favoriteFoods: ['chicken', 'sushi', 'ice cream']}
+];
 
 const createManyPeople = (arrayOfPeople, done) => {
-  done(null /*, data*/);
+  Person.create(arrayOfPeople, function(err, people){
+    if(err) return console.log(err);
+    done(null, people)
+  });
 };
+
+
+//To-Do # 5: Use model.find() to Search Your Database */
+
+
+
+
 
 const findPeopleByName = (personName, done) => {
   done(null /*, data*/);
