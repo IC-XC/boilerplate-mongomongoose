@@ -86,15 +86,35 @@ const findPersonById = (personId, done) => {
 
 const findEditThenSave = (personId, done) => {
   const foodToAdd = "hamburger";
+  Person.findById(personId, function(err, person){
+    if(err) return console.log(err);
 
-  done(null /*, data*/);
+    person.favoriteFoods.push(foodToAdd);
+
+    person.save((err, updatedPerson) => {
+      if(err) return console.log(err);
+      done(null, updatedPerson)
+    });
+  });
 };
+
+
+
+
+
+//To-Do # 9: Perform New Updates on a Document Using model.findOneAndUpdate() */  
 
 const findAndUpdate = (personName, done) => {
   const ageToSet = 20;
 
   done(null /*, data*/);
 };
+
+
+
+
+
+//To-Do # 10: Delete One Document Using model.findByIdAndRemove */ 
 
 const removeById = (personId, done) => {
   done(null /*, data*/);
