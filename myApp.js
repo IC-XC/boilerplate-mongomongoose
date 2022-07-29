@@ -131,12 +131,18 @@ const removeManyPeople = (done) => {
 
 //To-Do # 12: Chain Search Query Helpers to Narrow Search Results */
 
-const queryChain = (done) => {
-  const foodToSearch = "burrito";
-
-  done(null /*, data*/);
+var queryChain = function(done) {
+  var foodToSearch = "burrito";
+  Person.find({ favoriteFoods: foodToSearch })
+  .sort({ name: 1 })
+  .limit(2)
+  .select({ age: 0 })
+  .exec((err, data) => {
+     if(err)
+       done(err);
+    done(null, data);
+  })
 };
-
 
 /** **Well Done !!**
 /* You completed these challenges, let's go celebrate !
