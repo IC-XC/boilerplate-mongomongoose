@@ -123,9 +123,11 @@ const removeById = (personId, done) => {
 const removeManyPeople = (done) => {
   const nameToRemove = "Mary";
 
-  done(null /*, data*/);
+  Person.remove({name: nameToRemove}, (err, response) => {
+    if(err) return console.log(err);
+    done(null, response);
+  });
 };
-
 
 //To-Do # 12: Chain Search Query Helpers to Narrow Search Results */
 
