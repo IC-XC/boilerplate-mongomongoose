@@ -99,19 +99,16 @@ const findEditThenSave = (personId, done) => {
 };
 
 
-
-
-
 //To-Do # 9: Perform New Updates on a Document Using model.findOneAndUpdate() */  
 
 const findAndUpdate = (personName, done) => {
   const ageToSet = 20;
 
-  done(null /*, data*/);
+  Person.findOneAndUpdate({name: personName}, {age: ageToSet}, {new: true}, function(err, updateDoc){
+    if(err) return console.log(err);
+    done(null, updateDoc);
+  });
 };
-
-
-
 
 
 //To-Do # 10: Delete One Document Using model.findByIdAndRemove */ 
@@ -120,17 +117,24 @@ const removeById = (personId, done) => {
   done(null /*, data*/);
 };
 
+
+//To-Do # 11: Delete Many Documents with model.remove() */
+
 const removeManyPeople = (done) => {
   const nameToRemove = "Mary";
 
   done(null /*, data*/);
 };
 
+
+//To-Do # 12: Chain Search Query Helpers to Narrow Search Results */
+
 const queryChain = (done) => {
   const foodToSearch = "burrito";
 
   done(null /*, data*/);
 };
+
 
 /** **Well Done !!**
 /* You completed these challenges, let's go celebrate !
